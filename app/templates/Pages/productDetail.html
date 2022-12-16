@@ -1,0 +1,739 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kimi is a curated foods and beverages artisans.">
+    <meta name="author" content="Philip Herlambang">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <meta name="twitter:card" content="summary">
+    <meta name="title" content="Back to Kimi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en-id">
+
+
+    <!-- open graph metadata facebook, slack, whatsapp line -->
+    <meta property="fb:app_id" content="150112802189143"/>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Back to Kimi" />
+    <meta property='og:site_name' content='Kimi | Curated Foods and Beverages' />
+    <meta property="og:url" content="http://kimistatic.s3-website-ap-southeast-1.amazonaws.com/" />
+    <meta property="og:description" content="Kimi is a curated foods and beverages artisans." />
+    <meta property='og:image' content="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png" />
+
+
+    <!-- open graph metadata twitter -->
+    <meta name="twitter:title" content="Back to Kimi">
+    <meta name="twitter:url" content="http://www.backtokimi.com">
+    <meta name="twitter:description" content="Kimi is a curated foods and beverages artisans.">
+    <meta name="twitter:image" content="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png">
+    <meta name="twitter:site" content="@backtokimi">
+
+
+    <link rel="icon" href="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png">
+
+    <title>Back to Kimi</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/kimi.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/font-awesome.min.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid hidden-xs">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <button class="pull-left search-button" id="buttonOpenSearchbar"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button class="pull-left search-button hide" id="buttonCloseSearchbar"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                <div id="searchbar" class="hide">
+                    <div>
+                        <div class="top-nav-searchbar">
+                            <div class="input-group">
+                                <form action="search.html">
+                                    <input class="form-control" type="text" name="q" id="tipue_search_input" placeholder="Search for" autofocus="autofocus">
+                                </form>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+                <p class="help-text hidden-sm hidden-md" id="helpText">Bạn muốn tìm kiếm gì? || Phản hồi dịch vụ qua  <a href="mailto: kimi@gmail.com" class="text-secondary">kimi@gmail.com</a> </p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="text-center logo-container"><a href="index.html"><img src="{{ url_for('static',filename='images/logo.png')}}" width="100"></a></p>
+            </div>
+            <div class="col-md-4 less-padding-right">
+                <a href="registerMerchant.html" class="btn pull-right button-green-top-nav">Hãy là thành viên với Kimi</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-white">
+        <div class="navbar-header pull-left">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar icon-short"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar icon-medium"></span>
+            </button>
+        </div>
+        <div class="visible-xs logo-center">
+            <p class="text-center logo-container visible-xs"><a href="index.html"><img src="{{ url_for('static',filename='images/logo.png')}}" width="90"></a></p>
+        </div>
+        <div class="visible-xs pull-right">
+            <button class="pull-left search-button-mobile" id="buttonOpenSearchbarMobile"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="fly-searchbar" style="display: none;">
+            <div class="top-nav-searchbar searchbar-mobile">
+                <div class="input-group">
+                    <form action="search.html">
+                        <input class="form-control" type="text" name="q" id="tipue_search_input" placeholder="Search for" autofocus="autofocus">
+                    </form>
+                    <button class="pull-right" id="buttonCloseSearchbarMobile"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../">Shop</a></li>
+                <li><a href="../articles">Articles</a></li>
+                <li><a href="../merchantGuide">Chef Guide</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Location <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chefDirectory.html">Hải Châu</a></li>
+                        <li><a href="chefDirectory.html">Sơn Trà</a></li>
+                        <li><a href="chefDirectory.html">Liên Chiểu</a></li>
+                        <li><a href="chefDirectory.html">Cẩm Lệ</a></li>
+                        <li><a href="chefDirectory.html">Ngũ Hành Sơn</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="chefDirectory.html">Đà Nẵng</a></li>
+                        <li><a href="chefDirectory.html">Việt Nam</a></li>
+                    </ul>
+                </li>
+                <li><a href="../questions">FAQs</a></li>
+                <li><a href="../about">About</a></li>
+                <li><a href="../contact">Contact Us</a></li>
+                <li><a href="../chefDirectory">Chef Directory</a></li>
+                <li><a href="../login">Login / Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id = "cart_quantity" >Cart({{num_of_product}})</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form action='/addcart' method="post">
+                                <div class="cart-flyout"  id = "product_list">
+                                    <h4 class="text-oswald">Recently Added Product(s)</h4>
+                                    {% set total = [0] %}
+                                    {%for prod in cart_list%}
+                                    <div class="row">
+                                        <div class="col-sm-2 col-xs-3 less-padding">
+                                            <img src={{prod["image_link"]}} width="100%">
+                                        </div>
+                                        <div class="col-sm-8 col-xs-9">
+                                            <span class="text-gray-1">{{prod["product_name"]}}</span>
+                                            <p class="text-gray-2">{{prod["quantity"]}} x {{prod["price"]}}</p>
+                                            {% set _ = total.append(total.pop() + prod["price"]|int*prod["quantity"]|int) %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <hr>
+                                    <div id = "index_insert"></div>
+                                    <hr>                               
+                                    <div class="row">                                   
+                                        <div class="col-sm-6 col-xs-6 less-padding"><h4><small>Total</small><br><span id = "total">{{total[0]}} VND</span></h4></div>
+                                        <div class="col-sm-6 col-xs-6 less-padding">
+                                            <a href="./shoppingcart" class="button-green-top-nav btn pull-right btn-block text-oswald text-uppercase">Xem đơn hàng</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{%if item%}
+<div class="container kimi-container">
+    <ol class="breadcrumb hidden-xs">
+        <li><a href="../homepage">Home</a></li>
+        <li><a href="../channelDetail">{{item[4]}}</a></li>
+        <li><a href="#">{{item[1]}}</a></li>
+    </ol>
+</div>
+
+
+<div class="container" style="background: white; padding-bottom: 50px;">
+    <div class="col-md-6">
+        <!--carousel-->
+        <div id="main_area">
+            <!-- Slider -->
+            <div class="row" style="margin-top: 25px;">
+
+                <div class="col-sm-9 less-padding">
+                    <div class="col-xs-12 less-padding" id="slider">
+                        <!-- Top part of the slider -->
+                        <div class="row">
+                            <div class="col-sm-12" id="carousel-bounding-box">
+                                <div class="carousel slide" id="myCarousel">
+                                    <!-- Carousel items -->
+                                    <div class="carousel-inner">
+                                        <div class="active item" data-slide-number="0">
+                                            <img src={{item[5]}}>
+                                        </div>
+
+                                        <div class="item" data-slide-number="1">
+                                            <img src={{item[5]}}>
+                                        </div>
+
+                                    </div>
+                                    <!-- Carousel nav -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/Slider-->
+
+                <div class="col-sm-3" id="slider-thumbs">
+                    <a class="thumbnail" id="carousel-selector-0">
+                        <img src={{item[5]}}>
+                    </a>
+
+                    <a class="thumbnail" id="carousel-selector-1">
+                        <img src={{item[5]}}>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+        <!--carousel ends-->
+    </div>
+        <div class="col-md-6" style="position: relative;">
+            <div class="bookmarked"><img src="{{ url_for('static',filename='images/bookmarked.png')}}" width="86"> </div>
+            <h1>{{item[1]}}</h1>
+
+            <div class="row">
+                <div class="col-md-10">
+                    <a href="{{url_for('index_module.channeldetail',chef=item[6])}}" class="text-secondary"><h4>By {{item[6]}}</h4></a>
+                    <h4>Location: Viet Nam</h4>
+                </div>
+                <div class="col-md-2"><img src="{{ url_for('static',filename='images/halal.png')}}" width="60"> </div>
+            </div>
+
+
+            <p class="product-description">{{item[7]}}</p>
+            <p class="product-description">Min-order: {{item[3]}} pcs</p>
+
+            <div class="product-detail-tag-container">
+                <button class="btn outline-white-button">{{item[4]}}</button>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>{{item[2]}} VND</h3>
+                </div>
+                <div class="col-md-6" style="padding-top: 18px;">
+                    <p class="pull-left" style="line-height: 35px; margin-right: 20px;">Quantity</p>
+                    <form class="form-inline product-detail-form">
+                        <div class="form-group pull-left">
+                            <input type="number" class="form-control number-input" id="quantity_input"  value="1" style="width: 60px; border: none; font-weight: bold; font-size: 20px;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="product-detail-action-button-container">
+                <button onclick="myFunction('{{item[5]}}', '{{item[1]}}', '{{item[2]}}')" class="btn button-add-to-bag" style="margin-right: 10px;">Thêm vào giỏ</button>               
+                <button class="btn btn-default button-black button-learn-more" id="bookmarkButton">Thêm yêu thích</button>
+                <button class="btn btn-default button-black button-learn-more" id="deleteBookmarkButton" style="display: none;">Xóa yêu thích</button>
+            </div>
+
+
+        </div>
+</div><!-- /.container -->
+
+<div class="container" style="background: white; padding-bottom: 50px;">
+    <h2 class="text-center">{{item[1]}}</h2>
+    <hr class="hr-short">
+
+    <div class="col-md-8 col-md-offset-2">
+        <p class="helvetica-18 text-center">{{item[8]}}</p>
+        <img src={{item[5]}} width="100%" class="maya-small-padding" style="margin: 30px 0;">
+
+        <p class="helvetica-18 text-center">{{item[9]}}</p>
+    </div>
+</div>
+
+
+<div class="container" style="background: white; padding-bottom: 50px;">
+    <h2 class="text-center">Complete your Dish</h2>
+    <hr class="hr-short">
+
+    <div class="row">
+        <div class="row">
+            <h2 class="default-userProductList-InfoBar-title text-center"><i class="fa fa-heart-o" aria-hidden="true"></i> Món ăn yêu thích</h2>
+                {%for product in product_list%}
+                    <!-- <form method="post" action="{{url_for('cart_module.addcart',product_name=product[1])}}">              -->
+                        <div class="col-sm-6 col-md-4" data-behavior="sample_code">
+                            <a href="./productDetail/{{product[1]}}" class="thumbnail_item thumbnail less-padding less-margin">
+                                <img src={{product[5]}} >
+                            </a>
+                            <div class="caption box">
+                                <h3 name = 'product_name'><span  name="product_name">{{product[1]}}</span></h3>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-6">
+                                        <p class="default-userProductList-CardList-price"> {{product[2]}} VNĐ</p>
+                                        <span class="min-order">Miễn phí giao hàng với {{product[3]}} cái</span>
+                                    </div>
+                                    {% set product_name = product[1] %}
+                                    {% set product_price = product[2] %}
+                                    {% set image_link = product[5] %}
+                                    <div class="col-sm-4 col-xs-6">
+
+                                        <!-- <a href="{{url_for('cart_module.addcart',product_name=product[1])}}" class="btn default-userProductList-CardList-button pull-right" >Add to Cart</a> -->
+                                        
+                                        <button onclick="myFunction('{{product[5]}}', '{{product[1]}}', '{{product[2]}}')" class="btn default-userProductList-CardList-button pull-right">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <!-- </form> -->
+                {%endfor%}
+        </div>
+    </div>
+</div>
+{%endif%}
+
+
+
+<!--include footer-->
+<div class="include-footer"></div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ url_for('static',filename='js/jquery.min.js')}}"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+<script>
+    function myFunction(image_link, product_name, product_price) {
+    
+    const parentDiv = document.createElement("div")
+    parentDiv.className = "row"
+    parentDiv.id = `product_${product_name}`
+    
+    const newDiv1 = document.createElement("div")
+    newDiv1.className = "col-sm-4 col-xs-3 less-padding"
+    newDiv1.style.height = "100px";
+    newDiv1.style.display = "flex";
+    newDiv1.style.alignItems = "center";
+    newDiv1.style.objectFit = "contain";
+
+    const img  = document.createElement("img");
+    img.src = image_link
+    img.width = 100
+    
+    newDiv1.appendChild(img)
+    
+
+    const newDiv2 = document.createElement("div")
+    newDiv2.className = "col-sm-8 col-xs-9"
+    newDiv2.style.marginTop = "25px";
+    const newspan = document.createElement('span')
+    newspan.className = `text-gray-1`;
+    newspan.id = `${product_name}`;
+    newspan.setAttribute("name","product_name")
+    const textspan = document.createTextNode(product_name)
+    
+    newspan.appendChild(textspan)
+    newDiv2.appendChild(newspan)
+    
+    const newp = document.createElement("p")
+    newp.className = `text-gray-2 product_qty`;
+    newp.id = `${product_name}_qty`;
+    let checkProduct = document.getElementById(`${[product_name]}`);
+    let textp = undefined;
+    var temp_quantity = 1
+    if (checkProduct) {
+        let pTagQty = document.getElementById(`${product_name}_qty`);
+        let pQty = Number(String(pTagQty.innerText[0]).trim()) + 1;
+        textp = document.createTextNode(String(pQty)+"x"+product_price);
+        const productWrapper = document.getElementById(`product_${product_name}`);
+        productWrapper.remove();
+        temp_quantity = pQty
+    } else {
+        textp = document.createTextNode("1x"+product_price)
+    }
+    newp.appendChild(textp)
+
+    // newp.setAttribute("class","price")
+    
+    newDiv2.appendChild(newp)
+    
+    // newDiv1.appendChild(newspan)
+    // newDiv1.appendChild(newp)
+
+    parentDiv.appendChild(newDiv1)
+    parentDiv.appendChild(newDiv2)
+
+    let index_insert = document.getElementById("index_insert")
+    document.getElementById("product_list").insertBefore(parentDiv,index_insert);
+    var text_quantity = document.getElementById("cart_quantity")
+    removeAllText(text_quantity)
+    let result = countProduct()
+    cart_quantity = document.getElementById("cart_quantity")
+    text_cart = document.createTextNode("Cart ("+String(result-1)+")")
+    cart_quantity.append(text_cart)
+
+    sum = sumProduct()
+    total = document.getElementById("total")
+    removeAllText(total)
+    text_total = document.createTextNode(String(sum)+" VND")
+    total.appendChild(text_total)
+    // console.log(String(temp_quantity))
+    putData(product_name,String(temp_quantity),image_link,product_price)
+    }
+</script>   
+
+
+<script>
+    function countProduct()
+    {
+        var count = $('div[id^=product]').length
+        return count
+    }
+</script>
+
+<script>
+    function getNumProduct(value)
+    {
+        fetch('/homepage',{
+            method: 'put',
+            body: JSON.stringify({
+                'num' : value+1
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+</script>
+
+<script>
+    function removeAllText(element) {
+
+// loop through all the nodes of the element
+    var nodes = element.childNodes;
+
+    for(var i = 0; i < nodes.length; i++) {
+
+        var node = nodes[i];
+
+        // if it's a text node, remove it
+        if(node.nodeType == Node.TEXT_NODE) {
+
+            node.parentNode.removeChild(node);
+
+
+            i--; // have to update our incrementor since we just removed a node from childNodes
+
+        } else
+
+        // if it's an element, repeat this process
+        if(node.nodeType == Node.ELEMENT_NODE) {
+
+            removeAllText(node);
+
+        }
+    }
+}
+</script>
+
+<script>
+    function sumProduct()
+    {
+        const listPrices = document.querySelectorAll(".product_qty")
+        let total = 0
+        listPrices.forEach((row) => {
+            const rowStr = String(row.innerText).trim();
+            const x_position = rowStr.indexOf("x");
+            const price = Number(rowStr.slice(x_position+1, rowStr.length));
+            const quantity = Number(rowStr[0]);
+            total += parseInt(price*quantity, 10);
+        })
+        return total;
+    }
+
+</script>
+
+
+<script>
+    function putData(product_name,quantity,image_link,product_price)
+    {
+        fetch('/addcart',{
+            method: 'put',
+            body: JSON.stringify({
+                'product_name' : product_name,
+                'quantity': Number(quantity),
+                'image_link': image_link,
+                'price': Number(product_price)
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+</script>
+
+<script>
+    jQuery(document).ready(function($) {
+
+        // bookmark
+        $('.bookmarked').hide();
+
+
+        $('#bookmarkButton').on('click', function () {
+            $('.bookmarked').fadeIn(200);
+            $('#bookmarkButton').hide();
+            $('#deleteBookmarkButton').show();
+        });
+
+
+
+        // Delete bookmark
+
+        $('#deleteBookmarkButton').on('click', function () {
+            $('.bookmarked').fadeOut(200);
+            $('#bookmarkButton').show();
+            $('#deleteBookmarkButton').hide();
+        });
+
+
+        $('#myCarousel').carousel({
+            interval: 5000
+        });
+
+        //Handles the carousel thumbnails
+        $('[id^=carousel-selector-]').click(function () {
+            var id_selector = $(this).attr("id");
+            try {
+                var id = /-(\d+)$/.exec(id_selector)[1];
+                console.log(id_selector, id);
+                jQuery('#myCarousel').carousel(parseInt(id));
+            } catch (e) {
+                console.log('Regex failed!', e);
+            }
+        });
+        // When the carousel slides, auto update the text
+        $('#myCarousel').on('slid.bs.carousel', function (e) {
+            var id = $('.item.active').data('slide-number');
+            $('#carousel-text').html($('#slide-content-'+id).html());
+        });
+    });
+</script>
+
+<!--kimi basic js-->
+<script src="{{ url_for('static',filename='js/kimi.js')}}"></script>
+<script>
+    function myFunction(image_link, product_name, product_price) {
+    
+    const parentDiv = document.createElement("div")
+    parentDiv.className = "row"
+    parentDiv.id = `product_${product_name}`
+    
+    const newDiv1 = document.createElement("div")
+    newDiv1.className = "col-sm-4 col-xs-3 less-padding"
+    newDiv1.style.height = "100px";
+    newDiv1.style.display = "flex";
+    newDiv1.style.alignItems = "center";
+    newDiv1.style.objectFit = "contain";
+
+    const img  = document.createElement("img");
+    img.src = image_link
+    img.width = 100
+    
+    newDiv1.appendChild(img)
+    
+
+    const newDiv2 = document.createElement("div")
+    newDiv2.className = "col-sm-8 col-xs-9"
+    newDiv2.style.marginTop = "25px";
+    const newspan = document.createElement('span')
+    newspan.className = `text-gray-1`;
+    newspan.id = `${product_name}`;
+    newspan.setAttribute("name","product_name")
+    const textspan = document.createTextNode(product_name)
+    
+    newspan.appendChild(textspan)
+    newDiv2.appendChild(newspan)
+    
+    const newp = document.createElement("p")
+    newp.className = `text-gray-2 product_qty`;
+    newp.id = `${product_name}_qty`;
+    let checkProduct = document.getElementById(`${[product_name]}`);
+    let textp = undefined;
+    var temp_quantity = 1;
+    var quantity_input = document.getElementById("quantity_input").value;
+    if (checkProduct) {
+        let pTagQty = document.getElementById(`${product_name}_qty`);
+        let pQty = Number(String(pTagQty.innerText[0]).trim()) + 1;
+        textp = document.createTextNode(String(quantity_input)+"x"+product_price);
+        const productWrapper = document.getElementById(`product_${product_name}`);
+        productWrapper.remove();
+        temp_quantity = quantity_input
+    } else {
+        textp = document.createTextNode("1x"+product_price)
+    }
+    newp.appendChild(textp)
+
+    // newp.setAttribute("class","price")
+    
+    newDiv2.appendChild(newp)
+    
+    // newDiv1.appendChild(newspan)
+    // newDiv1.appendChild(newp)
+
+    parentDiv.appendChild(newDiv1)
+    parentDiv.appendChild(newDiv2)
+
+    let index_insert = document.getElementById("index_insert")
+    document.getElementById("product_list").insertBefore(parentDiv,index_insert);
+    var text_quantity = document.getElementById("cart_quantity")
+    removeAllText(text_quantity)
+    let result = countProduct()
+    cart_quantity = document.getElementById("cart_quantity")
+    text_cart = document.createTextNode("Cart ("+String(result-1)+")")
+    cart_quantity.append(text_cart)
+
+    sum = sumProduct()
+    total = document.getElementById("total")
+    removeAllText(total)
+    text_total = document.createTextNode(String(sum)+" VND")
+    total.appendChild(text_total)
+    console.log(String(quantity_input))
+    putData(product_name,String(quantity_input),image_link,product_price)
+    }
+</script>   
+
+
+<script>
+    function countProduct()
+    {
+        var count = $('div[id^=product]').length
+        return count
+    }
+</script>
+
+<script>
+    function getNumProduct(value)
+    {
+        fetch('/homepage',{
+            method: 'put',
+            body: JSON.stringify({
+                'num' : value+1
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+</script>
+
+<script>
+    function removeAllText(element) {
+
+// loop through all the nodes of the element
+    var nodes = element.childNodes;
+
+    for(var i = 0; i < nodes.length; i++) {
+
+        var node = nodes[i];
+
+        // if it's a text node, remove it
+        if(node.nodeType == Node.TEXT_NODE) {
+
+            node.parentNode.removeChild(node);
+
+
+            i--; // have to update our incrementor since we just removed a node from childNodes
+
+        } else
+
+        // if it's an element, repeat this process
+        if(node.nodeType == Node.ELEMENT_NODE) {
+
+            removeAllText(node);
+
+        }
+    }
+}
+</script>
+
+<script>
+    function sumProduct()
+    {
+        const listPrices = document.querySelectorAll(".product_qty")
+        let total = 0
+        listPrices.forEach((row) => {
+            const rowStr = String(row.innerText).trim();
+            const x_position = rowStr.indexOf("x");
+            const price = Number(rowStr.slice(x_position+1, rowStr.length));
+            const quantity = Number(rowStr[0]);
+            total += parseInt(price*quantity, 10);
+        })
+        return total;
+    }
+
+</script>
+
+
+<script>
+    function putData(product_name,quantity,image_link,product_price)
+    {
+        fetch('/addcart',{
+            method: 'put',
+            body: JSON.stringify({
+                'product_name' : product_name,
+                'quantity': Number(quantity),
+                'image_link': image_link,
+                'price': Number(product_price)
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+</script>
+</body>
+</html>

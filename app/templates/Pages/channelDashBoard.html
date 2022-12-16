@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="Kimi is a curated foods and beverages artisans.">
+    <meta name="author" content="Johnson Chandra, Allysa Prabandani, Philipus Herlambang, Maya Editorial">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+
+    <meta name="twitter:card" content="summary">
+    <meta name="title" content="Back to Kimi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Language" content="en-id">
+
+
+    <!-- open graph metadata facebook, slack, whatsapp line -->
+    <meta property="fb:app_id" content="150112802189143"/>
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="Back to Kimi" />
+    <meta property='og:site_name' content='Kimi | Curated Foods and Beverages' />
+    <meta property="og:url" content="http://kimistatic.s3-website-ap-southeast-1.amazonaws.com/" />
+    <meta property="og:description" content="Kimi is a curated foods and beverages artisans." />
+    <meta property='og:image' content="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png" />
+
+
+    <!-- open graph metadata twitter -->
+    <meta name="twitter:title" content="Back to Kimi">
+    <meta name="twitter:url" content="http://www.backtokimi.com">
+    <meta name="twitter:description" content="Kimi is a curated foods and beverages artisans.">
+    <meta name="twitter:image" content="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png">
+    <meta name="twitter:site" content="@backtokimi">
+
+
+    <link rel="icon" href="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://s3-ap-southeast-1.amazonaws.com/kimistatic/images/apple-touch-icon.png">
+
+    <title>Sucicakes</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/kimi.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='css/font-awesome.min.css')}}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid hidden-xs">
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
+                <button class="pull-left search-button" id="buttonOpenSearchbar"><i class="fa fa-search" aria-hidden="true"></i></button>
+                <button class="pull-left search-button hide" id="buttonCloseSearchbar"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                <div id="searchbar" class="hide">
+                    <div>
+                        <div class="top-nav-searchbar">
+                            <div class="input-group">
+                                <form action="search.html">
+                                    <input class="form-control" type="text" name="q" id="tipue_search_input" placeholder="Search for" autofocus="autofocus">
+                                </form>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+                <p class="help-text hidden-sm hidden-md" id="helpText">Bạn muốn tìm kiếm gì? || Phản hồi dịch vụ qua  <a href="mailto: kimi@gmail.com" class="text-secondary">kimi@gmail.com</a> </p>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <p class="text-center logo-container"><a href="index.html"><img src="{{ url_for('static',filename='images/logo.png')}}" width="100"></a></p>
+            </div>
+            <div class="col-md-4 less-padding-right">
+                <a href="registerMerchant.html" class="btn pull-right button-green-top-nav">Hãy là thành viên với Kimi</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-white">
+        <div class="navbar-header pull-left">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar icon-short"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar icon-medium"></span>
+            </button>
+        </div>
+        <div class="visible-xs logo-center">
+            <p class="text-center logo-container visible-xs"><a href="index.html"><img src="{{ url_for('static',filename='images/logo.png')}}" width="90"></a></p>
+        </div>
+        <div class="visible-xs pull-right">
+            <button class="pull-left search-button-mobile" id="buttonOpenSearchbarMobile"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="fly-searchbar" style="display: none;">
+            <div class="top-nav-searchbar searchbar-mobile">
+                <div class="input-group">
+                    <form action="search.html">
+                        <input class="form-control" type="text" name="q" id="tipue_search_input" placeholder="Search for" autofocus="autofocus">
+                    </form>
+                    <button class="pull-right" id="buttonCloseSearchbarMobile"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="../">Shop</a></li>
+                <li><a href="../articles">Articles</a></li>
+                <li><a href="../merchantGuide">Chef Guide</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Location <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chefDirectory.html">Hải Châu</a></li>
+                        <li><a href="chefDirectory.html">Sơn Trà</a></li>
+                        <li><a href="chefDirectory.html">Liên Chiểu</a></li>
+                        <li><a href="chefDirectory.html">Cẩm Lệ</a></li>
+                        <li><a href="chefDirectory.html">Ngũ Hành Sơn</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="chefDirectory.html">Đà Nẵng</a></li>
+                        <li><a href="chefDirectory.html">Việt Nam</a></li>
+                    </ul>
+                </li>
+                <li><a href="../questions">FAQs</a></li>
+                <li><a href="../about">About</a></li>
+                <li><a href="../contact">Contact Us</a></li>
+                <li><a href="../chefDirectory">Chef Directory</a></li>
+                <li><a href="../login">Login / Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id = "cart_quantity" >Cart({{num_of_product}})</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <form action='/addcart'>
+                                <div class="cart-flyout"  id = "product_list">
+                                    <h4 class="text-oswald">Recently Added Product(s)</h4>
+                                    {% set total = [0] %}
+                                    {%for prod in cart_list%}
+                                    <div class="row">
+                                        <div class="col-sm-2 col-xs-3 less-padding">
+                                            <img src={{prod["image_link"]}} width="100%">
+                                        </div>
+                                        <div class="col-sm-8 col-xs-9">
+                                            <span class="text-gray-1">{{prod["product_name"]}}</span>
+                                            <p class="text-gray-2">{{prod["quantity"]}} x {{prod["price"]}}</p>
+                                            {% set _ = total.append(total.pop() + prod["price"]|int*prod["quantity"]|int) %}
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <hr>
+                                    <div id = "index_insert"></div>
+                                    <hr>                               
+                                    <div class="row">                                   
+                                        <div class="col-sm-6 col-xs-6 less-padding"><h4><small>Total</small><br><span id = "total">{{total[0]}} VND</span></h4></div>
+                                        <div class="col-sm-6 col-xs-6 less-padding">
+                                            <a href="./shoppingcart" class="button-green-top-nav btn pull-right btn-block text-oswald text-uppercase">View Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container kimi-container" >
+    <ol class="breadcrumb hidden-xs">
+        <li><a href="./">Home</a></li>
+        <li>Channel Dashboard</li>
+    </ol>
+</div>
+
+
+<div class="container channel-cover">
+    <img src="{{ url_for('static',filename='images/coverSucicakes.jpg')}}" class="cover-image">
+    <div class="hidden-xs channel-info">
+        <h1 class="text-red">{{chef}}</h1>
+        <img src="{{ url_for('static',filename='images/premium.png')}}" class="pull-left">
+        <h4 style="margin-left: 10px; float: left;">Premium Seller</h4>
+        <div class="clearfix maya-small-padding"></div>
+        <img src="{{ url_for('static',filename='images/halal35.png')}}">
+    </div>
+</div>
+
+<div class="container hidden-xs bg-white" style="padding-bottom: 20px;">
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-2 hidden-xs">
+            <p class=""><img src="{{ url_for('static',filename='images/sucicakes_logo.png')}}" width="100"></p>
+        </div>
+
+        <div class="col-md-3">
+            <p>Page: <a href="#" class="text-secondary">namn@gmail.com</a></p>
+            <p>Coverage: Nhat Nam</p>
+            <p>Location: Việt Nam</p>
+        </div>
+        <div class="col-md-4">
+            <p>Last Logged in: Aug, 2022</p>
+            <p>Join: Aug, 2022</p>
+            <p>Favourites: 1314</p>
+        </div>
+        <div class="col-md-3">
+            <!--<button class="button-gray-2 btn btn-block">Make Favourite</button>-->
+            <!--<div class="clearfix" style="margin-bottom: 15px;"></div>-->
+            <!--<a href="channelDashboard.html" class="button-gray-2 btn btn-block">Go to My Dashboard</a>-->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <!--<img src="images/sucicakes_logo.png">-->
+            <!--&lt;!&ndash;<a href="channelEdit.html" class="btn button-red">Edit</a>&ndash;&gt;-->
+        </div>
+        <div class="col-md-3">
+            <strong>Saldo di Kimi</strong>
+            <h3 class="text-secondary"> 200.000 VNĐ</h3>
+            <!--<button class="btn button-red">Request Cairkan Dana</button>-->
+        </div>
+        <div class="col-md-3">
+            <p>Page: <a href="channelDetail.html" class="text-secondary">nam@gmail.com</a></p>
+            <p>Email: <a class="text-secondary" href="mailto: kimi@gmail.com">kimi@gmail.com</a></p>
+            <p>Phone:+84 352007651</p>
+        </div>
+        <div class="col-md-4">
+            <address>
+                Da Nang, Viet Nam
+            </address>
+            <a href="channelEdit.html" class="btn button-red">Edit</a>
+        </div>
+    </div>
+</div>
+
+<div class="container visible-xs" style="padding-top: 15px; background: white; padding-bottom: 10px; border-bottom: 1px solid #E7EAEA;">
+    <div class="row">
+        <div class="col-xs-1" style="padding-left: 5px;">
+            <img src="{{ url_for('static',filename='images/premium_badge.png')}}" style="margin-top: 10px;">
+        </div>
+        <div class="col-xs-3 less-padding-left">
+            <img src="{{ url_for('static',filename='images/sucicakes_logo.png')}}" width="100%">
+        </div>
+        <div class="col-xs-8 less-padding-left">
+            <p class="helvetica-18 text-bold less-margin less-padding" style="margin-top: 10px;">Sucicakes</p>
+            <a href="{{ url_for('static',filename='editProfile.html')}}" class="text-red helvetica-12 text-bold">Edit Profile</a>
+        </div>
+    </div>
+</div>
+
+<div class="container visible-xs" style="padding-top: 15px; background: white; padding-bottom: 10px; border-bottom: 1px solid #E7EAEA;">
+    <div class="row">
+        <div class="col-xs-4">
+            <p class="text-bold helvetica-14 less-margin">Saldo</p>
+            <span class="text-secondary text-bold"> 200.000 VNĐ</span>
+        </div>
+        <div class="col-xs-4">
+            <p class="text-bold helvetica-14 less-margin">Pendapatan</p>
+            <span class="text-secondary text-bold"> 40.000 VNĐ</span>
+        </div>
+        <div class="col-xs-2" style="margin-top: 10px;">
+            <a href="#" class="btn button-gray-3">Details</a>
+        </div>
+    </div>
+</div>
+
+<div class="container visible-xs" style="padding-top: 15px; background: white; padding-bottom: 10px; border-bottom: 1px solid #E7EAEA;">
+    <div class="row">
+        <div class="col-xs-12">
+            <h3 class="text-red">New Order<small class="pull-right" style="line-height: 34px;"><a href="#" class="text-secondary">Go to Order List</a></small></h3>
+            <h4>Sigit Setiadji</h4>
+            <p>5 Nasi Bakar Ayam Woku</p>
+            <strong>Tomorrow 4 PM</strong>
+            <address>
+                Da Nang, Viet Nam
+            </address>
+            <button class="btn button-gray-3">See Details</button>
+            <button class="btn button-red">Reject with reason</button>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="container" style="padding-bottom: 50px; padding-top: 20px;">
+
+    <div class="row maya-well-padding hidden-xs" style="background: white;">
+        <div class="col-md-9">
+            <p class="helvetica-18">Sucicakes adalah home industry makanan dan kue baik modern maupun tradisional.  Didirikan oleh Aurelia Suci di tahun 2012, sekarang Sucicakes sudah melayani ratusan customer. Sucicakes sangat menjaga kualitas dan kebersihan bahan makanan.</p>
+        </div>
+
+        <div class="col-md-3">
+            <a href="channelEdit.html" class="button-red btn pull-right">Edit Seller Description</a>
+        </div>
+    </div>
+
+    <div class="row maya-well-padding">
+        <div class="col-sm-6 col-md-4 hidden-xs">
+            <a href="#" class="thumbnail less-padding default-userProductList-CardList-thumbnail" data-toggle="modal" data-target="#uploadProductDesktop">
+                <img src="{{ url_for('static',filename='images/add_product.png')}}" alt="">
+            </a>
+        </div>
+
+        <!-- Modal Desktop -->
+        <div class="modal fade" id="uploadProductDesktop" tabindex="-1" role="dialog" aria-labelledby="uploadProductDesktop">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Add Product</h4>
+                        </div>
+                        <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <label for="file-upload" class="custom-file-upload">
+                                            <img src="{{ url_for('static',filename='images/add_photo_desktop.png')}}" width="100%">
+                                        </label>
+                                        <input id="file-upload" name="file_upload" type="file" accept="image/*" onchange="loadFile(event)" required/>
+                                    </div>
+                                    <div class="col-sm-3" style="position: relative;">
+                                        <img id="output" width="100%">
+                                    </div>
+                                </div>
+                                <script>
+                                    var loadFile = function(event) {
+                                    var output = document.getElementById('output');
+                                    output.src = URL.createObjectURL(event.target.files[0]);
+                                    output.onload = function() {
+                                        URL.revokeObjectURL(output.src) // free memory
+                                    }
+                                    };
+                                </script>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4 class="modal-title" style="margin-bottom: 10px;">Product</h4>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="product_name" placeholder="Product Name">
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" name="price" placeholder="Price">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" name="time_order" placeholder="Time">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" name="type_food" placeholder="Type Food">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="story1" placeholder="Story 1"  multiple>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="story2" placeholder="Story 2"  multiple>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="story3" placeholder="Story 3"  multiple>
+                                        </div>
+                                        <div class="clearfix" style="margin-bottom: 15px;"></div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn button-red" data-dismiss="modal" aria-label="Close">Submit</button>
+                        </div>
+                        <input type="submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Modal Mobile-->
+        <div class="modal fade" id="uploadProductMobile" tabindex="-1" role="dialog" aria-labelledby="uploadProductMobile">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="">Add Product</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mobile-upload-interface">
+                            <div class="col-xs-3">
+                                <label for="file-upload" class="custom-file-upload">
+                                    <img src="{{ url_for('static',filename='images/add_photo_mobile.png')}}" width="100%">
+                                </label>
+                                <input id="file-upload-mobile" type="file"/>
+                            </div>
+                            <div class="col-xs-3" style="position: relative;">
+                                <img src="{{ url_for('static',filename='images/bolkus.png')}}" width="100%">
+
+                            </div>
+                            <div class="col-xs-3" style="position: relative;">
+                                <img src="{{ url_for('static',filename='images/bolkus2.png')}}" width="100%">
+
+                            </div>
+                            <div class="col-xs-3" style="position: relative;">
+                                <img src="{{ url_for('static',filename='images/bolkus3.png')}}" width="100%">
+                            </div>
+
+                            <div class="col-xs-6" style="margin-top: 20px;">
+                                <button class="btn button-gray-2">Add Photo</button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p class="text-gray-2 helvetica-13 text-center" style="margin: 10px 0">
+                                    Base photo akan digunakan sebagai thumbnail dan photo utama. Checkout our <a href="#" class="text-secondary text-bold">recommended photo guidelines</a> and tips for product images look great on backtokimi.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="modal-title" style="margin-bottom: 10px;">Product</h4>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="" placeholder="Nama Produk">
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Harga">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Berat (gram)">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Minimum Order">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" rows="3" placeholder="Deskripsi Produk"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix" style="margin-bottom: 15px;"></div>
+
+
+                                </form>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="modal-title" style="margin-bottom: 10px;">Ukuran Produk</h4>
+                                <p class="text-gray-2 helvetica-13">Diperlukan untuk produk yang memiliki volume dalam pengiriman. Contoh kue tart</p>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Panjang (cm)">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Lebar (cm)">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <input type="number" class="form-control" id="" placeholder="Tinggi (cm)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix" style="margin-bottom: 15px;"></div>
+
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Produk memerlukan perlindungan khusus dalam pengiriman
+                                        </label>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer footer-button-mobile-interface">
+                        <div class="col-xs-3">
+                            <button type="button" class="btn button-red btn-block" data-dismiss="modal" aria-label="Close">Cancel</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn button-gray-3 btn-block" data-dismiss="modal">Draft</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn button-gray-3 btn-block">Preview</button>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn button-green btn-block">Publish</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-6 visible-xs">
+            <h3 class="text-red">My Products</h3>
+            <p>Currently you have 5 products<a href="#" class="text-red pull-right">Urutkan</a></p>
+
+            <button class="btn btn-block button-add-product" data-toggle="modal" data-target="#uploadProductMobile"><i class="fa fa-plus" aria-hidden="true"></i> Add Product</button>
+            <div class="maya-small-padding"></div>
+        </div>
+
+        {%for product in products%}
+        <!-- <form method="post" action="{{url_for('cart_module.addcart',product_name=product[1])}}">              -->
+            <div class="col-sm-6 col-md-4" data-behavior="sample_code">
+                <a href="./productDetail/{{product[1]}}" class="thumbnail_item thumbnail less-padding less-margin">
+                    <img src="{{ url_for('static',filename='images/'+product[5])}}">
+                </a>
+                <div class="caption box">
+                    <h3 name = 'product_name'><span  name="product_name">{{product[1]}}</span></h3>
+                    <div class="row">
+                        <div class="col-sm-8 col-xs-6">
+                            <p class="default-userProductList-CardList-price">{{product[2]}} VNĐ</p>
+                            <span class="min-order">Miễn phí giao hàng với{{product[3]}} cái</span>
+                        </div>
+                        {% set product_name = product[1] %}
+                        {% set product_price = product[2] %}
+                        {% set image_link = product[5] %}
+                        <div class="col-sm-4 col-xs-6">
+
+                            <!-- <a href="{{url_for('cart_module.addcart',product_name=product[1])}}" class="btn default-userProductList-CardList-button pull-right" >Add to Cart</a> -->
+                            
+                            <button onclick="myFunction('{{product[5]}}', '{{product[1]}}', '{{product[2]}}')" class="btn default-userProductList-CardList-button pull-right">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </form> -->
+        {%endfor%}
+    </div>
+</div>
+
+<!--include footer-->
+<div class="include-footer"></div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ url_for('static',filename='js/jquery.min.js')}}"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="{{ url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+<!--kimi basic js-->
+<!-- <script src="{{ url_for('static',filename='js/kimi.js')}}"></script>  -->
+
+</body>
+</html>

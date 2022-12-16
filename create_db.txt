@@ -1,0 +1,51 @@
+CREATE TABLE accounts (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	role VARCHAR(50)
+);
+
+CREATE TABLE products (
+	product_id serial PRIMARY KEY,
+	product_name VARCHAR ( 50 ) UNIQUE NOT NULL,
+	price VARCHAR ( 50 ) NOT NULL,
+	time_order VARCHAR ( 255 ) NOT NULL,
+    type_food VARCHAR(50),
+	image VARCHAR(500),
+	description VARCHAR ( 1000 ),
+	chef VARCHAR ( 50 ),
+	story VARCHAR ( 500 ),
+	story2 VARCHAR ( 500 ),
+	story3 VARCHAR ( 500 )
+);
+
+CREATE TABLE cart (
+	id serial PRIMARY KEY,
+	user_id int,
+	fullname VARCHAR ( 50 ),
+	email VARCHAR ( 50 ),
+	address VARCHAR ( 500 ),
+	phone VARCHAR ( 50 ),
+	order_date date,
+	delivery_date date,
+	order_number VARCHAR ( 50 ),
+	product_list VARCHAR ( 500 ),
+	total int
+);
+
+Create TABLE employees( 
+	id serial PRIMARY KEY,
+	employee_name VARCHAR(50),
+	country VARCHAR(50),
+	location VARCHAR(100),
+	date_of_birth date,
+	date_join date,
+	position VARCHAR(50)
+)
+
+Insert Into products(product_name,price,time_order,type_food,image) Values('Oats Cake','35000','15','Cake','https://www.thespruceeats.com/thmb/wLpfhJTtotgWFmvC1R4NgvTwBfk=/4160x3120/smart/filters:no_upscale()/mango-cake-recipe-easy-3217330-hero-01-a3aa1f74ee3c4119bdfcf60abb5ffc3a.jpg');
+Insert Into products(product_name,price,time_order,type_food,image) Values('Mango Cake','25000','20','Cake','https://www.thespruceeats.com/thmb/wLpfhJTtotgWFmvC1R4NgvTwBfk=/4160x3120/smart/filters:no_upscale()/mango-cake-recipe-easy-3217330-hero-01-a3aa1f74ee3c4119bdfcf60abb5ffc3a.jpg');
+Insert Into products(product_name,price,time_order,type_food,image) Values('Banana Cake','15000','15','Cake','https://www.thespruceeats.com/thmb/wLpfhJTtotgWFmvC1R4NgvTwBfk=/4160x3120/smart/filters:no_upscale()/mango-cake-recipe-easy-3217330-hero-01-a3aa1f74ee3c4119bdfcf60abb5ffc3a.jpg');
+Insert Into products(product_name,price,time_order,type_food,image) Values('Straw Berry Cake','35000','15','Cake','https://www.thespruceeats.com/thmb/wLpfhJTtotgWFmvC1R4NgvTwBfk=/4160x3120/smart/filters:no_upscale()/mango-cake-recipe-easy-3217330-hero-01-a3aa1f74ee3c4119bdfcf60abb5ffc3a.jpg');
+Insert Into products(product_name,price,time_order,type_food,image) Values('Blue Berry Cake','35000','15','Cake','https://www.thespruceeats.com/thmb/wLpfhJTtotgWFmvC1R4NgvTwBfk=/4160x3120/smart/filters:no_upscale()/mango-cake-recipe-easy-3217330-hero-01-a3aa1f74ee3c4119bdfcf60abb5ffc3a.jpg');
